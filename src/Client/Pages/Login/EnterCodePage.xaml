@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Client.Pages.Login.EnterCodePage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:syncfusionInputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:resx="clr-namespace:Client.Resources.Texts"
+             xmlns:constants="clr-namespace:Client.Constants.AppConstants"
+             NavigationPage.IconColor="Black">
+    <ScrollView x:Name="scrollView" 
+        VerticalScrollBarVisibility="Never"
+        VerticalOptions="Fill">
+        <VerticalStackLayout VerticalOptions="End">
+            <Frame BackgroundColor="{x:DynamicResource Primary}"
+           Padding="35,35, 35, 0">
+                <VerticalStackLayout>
+                    <Label Text="{x:Static resx:Texts.EnterCodeTitle}"
+                   TextColor="{x:DynamicResource Secondary}"
+                   Style="{StaticResource LabelH5}" />
+                    <Label Text="{x:Static resx:Texts.EnterCodeDescription}"
+                   TextColor="{x:DynamicResource Secondary}"
+                   Style="{StaticResource LabelBody1}"
+                   Margin="0,8,0,42" />
+                    <syncfusion:SfTextInputLayout Style="{StaticResource StrokeEditValueLayout}">
+                        <syncfusionInputs:SfMaskedEntry
+                            MaskType="Simple"
+                            PromptChar=" "
+                            Mask="{x:Static constants:EnterCodeConstants.EnterCodeMask}"
+                            Value="{Binding Code, Mode=TwoWay}"
+                            TextColor="{x:DynamicResource Secondary}"
+                            ValueChanged="CodeEntry_ValueChanged"/>
+                    </syncfusion:SfTextInputLayout>
+                    <HorizontalStackLayout x:Name="enterCodeTimerStack">
+                            <Label Text="{x:Static resx:Texts.EnterCodeTimerText}"
+                               TextColor="{x:DynamicResource Secondary}"
+                               Style="{StaticResource LabelSubtitle3}"
+                               Margin="8,6,0,0" />
+
+                            <Label TextColor="{x:DynamicResource Black}"
+                                   Style="{StaticResource LabelBody3}"
+                                   Margin="8,3,0,0"
+                                   x:Name="timerLable"/>
+                    </HorizontalStackLayout>
+                    <Label TextColor="{x:DynamicResource Black}"
+                               Style="{StaticResource LabelBody3}"
+                               Text="{x:Static resx:Texts.RequestNewCode}"
+                               IsVisible="False"
+                               x:Name="requestNewCodeLink" 
+                               HorizontalTextAlignment="Center"
+                               TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="RequestNewCodeLink_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Button  Text="{x:Static resx:Texts.Next}"
+                             BackgroundColor="{x:DynamicResource Secondary}"
+                             Style="{StaticResource Button}"
+                             TextColor="Black"
+                             Margin="0,62,0,18"
+                             HeightRequest="55"
+                             IsEnabled="{Binding FormIsValid}"
+                             Command="{Binding LoginCommand}"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

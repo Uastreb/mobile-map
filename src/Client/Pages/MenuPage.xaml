@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Client.Pages.MenuPage"
+             xmlns:resx="clr-namespace:Client.Resources.Texts"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             Title="MenuPage">
+    <ScrollView VerticalScrollBarVisibility="Never"
+                VerticalOptions="Fill">
+        <VerticalStackLayout Margin="5,38,5,10">
+            <syncfusion:SfEffectsView>
+                <HorizontalStackLayout Padding="19,0,0,0">
+                    <syncfusion:SfAvatarView ContentType="AvatarCharacter"
+                                         VerticalOptions="Center"
+                                         HorizontalOptions="Center"   
+                                         HeightRequest="60"
+                                         WidthRequest="60"
+                                         CornerRadius="30"/>
+                    <VerticalStackLayout Margin="16,0,0,0">
+                        <Label Text="{x:Static resx:Texts.EditProfileButton}"
+                           Style="{StaticResource LabelBody3}"
+                           TextColor="{DynamicResource Black}"
+                           Margin="0,9,0,0"/>
+
+                        <Label  Text="{Binding PhoneNumber}"
+                            Style="{StaticResource LabelBody2}"
+                            TextColor="{DynamicResource Secondary2}"
+                            Margin="0,4,0,0"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </syncfusion:SfEffectsView>
+            <VerticalStackLayout Margin="0,34,0,0">
+                <syncfusion:SfEffectsView>
+                    <Label Text="{x:Static resx:Texts.PaymentMethods}"
+                       Style="{x:StaticResource LabelBody1}"
+                       Padding="19,12,0,12"
+                       TextColor="{x:DynamicResource Black}">
+                    </Label>
+                </syncfusion:SfEffectsView>
+                <syncfusion:SfEffectsView>
+                    <Label Text="{x:Static resx:Texts.MyAdresses}"
+                       Style="{x:StaticResource LabelBody1}"
+                       Padding="19,12,0,12"
+                       TextColor="{x:DynamicResource Black}">
+                    </Label>
+                </syncfusion:SfEffectsView>
+                <syncfusion:SfEffectsView>
+                    <Label Text="{x:Static resx:Texts.TrustContact}"
+                       Style="{x:StaticResource LabelBody1}"
+                       Padding="19,12,0,12"
+                       TextColor="{x:DynamicResource Black}">
+                    </Label>
+                </syncfusion:SfEffectsView>
+                <syncfusion:SfEffectsView>
+                    <Label Text="{x:Static resx:Texts.PromoCode}"
+                       Style="{x:StaticResource LabelBody1}"
+                       Padding="19,12,0,12"
+                       TextColor="{x:DynamicResource Black}">
+                    </Label>
+                </syncfusion:SfEffectsView>
+                <syncfusion:SfEffectsView>
+                    <Label Text="{x:Static resx:Texts.History}"
+                       Style="{x:StaticResource LabelBody1}"
+                       Padding="19,12,0,12"
+                       TextColor="{x:DynamicResource Black}">
+                    </Label>
+                </syncfusion:SfEffectsView>
+                <syncfusion:SfEffectsView>
+                    <Label Text="{x:Static resx:Texts.News}"
+                       Style="{x:StaticResource LabelBody1}"
+                       Padding="19,12,0,12"
+                       TextColor="{x:DynamicResource Black}">
+                    </Label>
+                </syncfusion:SfEffectsView>
+                <syncfusion:SfEffectsView>
+                    <Label Text="{x:Static resx:Texts.Information}"
+                       Style="{x:StaticResource LabelBody1}"
+                       Padding="19,12,0,12"
+                       TextColor="{x:DynamicResource Black}">
+                    </Label>
+                </syncfusion:SfEffectsView>
+                <syncfusion:SfEffectsView>
+                    <Label
+                       Text="{x:Static resx:Texts.LogOut}"
+                       Style="{x:StaticResource LabelBody1}"
+                       Padding="19,12,0,12"
+                       TextColor="{x:DynamicResource Black}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LogoutCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </syncfusion:SfEffectsView>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

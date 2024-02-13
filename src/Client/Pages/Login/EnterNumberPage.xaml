@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Client.Pages.Login.EnterNumberPage"
+             xmlns:viewModels="clr-namespace:Client.ViewModels"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:syncfusionInputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:resx="clr-namespace:Client.Resources.Texts"
+             xmlns:constants="clr-namespace:Client.Constants.AppConstants"
+             NavigationPage.IconColor="Black">
+    <ScrollView x:Name="scrollView" 
+            VerticalScrollBarVisibility="Never"
+            VerticalOptions="Fill">
+        <VerticalStackLayout VerticalOptions="End">
+            <Frame BackgroundColor="{x:DynamicResource Primary}"
+               Padding="35,35, 35, 0">
+                <VerticalStackLayout>
+                    <Label Text="{x:Static resx:Texts.EnterPhoneTitle}"
+                       TextColor="{x:DynamicResource Secondary}"
+                       Style="{StaticResource LabelH5}" />
+                    <Label Text="{x:Static resx:Texts.EnterPhoneDescription}"
+                       TextColor="{x:DynamicResource Secondary}"
+                       Style="{StaticResource LabelBody1}"
+                       Margin="0,8,0,42" />
+                    <syncfusion:SfTextInputLayout ErrorText="{x:Static resx:Texts.EnterPhoneErrorText}"
+                                               Style="{StaticResource StrokeEditValueLayout}">
+                        <syncfusionInputs:SfMaskedEntry
+                            MaskType="Simple"
+                            PromptChar=" "
+                            Mask="{x:Static constants:EnterNumberConstants.EnterPhoneMask}"
+                            Value="{Binding PhoneNumber, Mode=TwoWay}"
+                            TextColor="{x:DynamicResource White}"
+                            ValueChanged="PhoneEntry_ValueChanged"/>
+                    </syncfusion:SfTextInputLayout>
+                    <HorizontalStackLayout Margin="0">
+                        <CheckBox Color="{x:DynamicResource Secondary}"
+                                  IsChecked="{Binding AgreeWithPrivacyPolicy, Mode=TwoWay}"
+                                  CheckedChanged="PrivaciPolicyCheckBox_CheckedChanged"/>
+                        <Label Text="{x:Static resx:Texts.PrivacyPolicyAgreement}"
+                           TextColor="{x:DynamicResource Secondary}"
+                           Style="{StaticResource LabelSubtitle3}"
+                           Margin="8,6,0,0"/>
+                    </HorizontalStackLayout>
+                    <Button  Text="{x:Static resx:Texts.Next}"
+                             BackgroundColor="{x:DynamicResource Secondary}"
+                             Style="{StaticResource Button}"
+                             TextColor="Black"
+                             Margin="0,62,0,18"
+                             HeightRequest="55"
+                             Command="{Binding EnterPhoneCommand}"
+                             IsEnabled="{Binding FormIsValid}"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
